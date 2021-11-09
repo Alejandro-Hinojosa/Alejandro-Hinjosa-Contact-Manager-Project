@@ -1,3 +1,5 @@
+import util.Input;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -6,9 +8,13 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
+
 
 public class Contacts {
-    public static void main(String[] args) throws IOException {
+
+        public static void main(String[] args) throws IOException {
+        Scanner scanner = new Scanner(System.in);
 
         System.out.println("1. View contacts.");
         System.out.println("2. Add a new contact.");
@@ -47,5 +53,5 @@ public class Contacts {
         System.out.println("printList = " + printList);
 
 
-    }
+        }
 }
