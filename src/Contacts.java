@@ -26,7 +26,7 @@ public class Contacts {
         Path dataFile = Paths.get(directory, filename);
         //building the whole shebang! A path combining: the directory's path + the desired filename at the end :D
 
-        System.out.println(dataFile);
+//        System.out.println(dataFile);
 
         if(Files.notExists(dataFile)){
             Files.createFile(dataFile);
@@ -34,17 +34,37 @@ public class Contacts {
 
         Path contactPath = Paths.get(directory, filename);
 
-        System.out.println("contactPath = " + contactPath);
-        System.out.println("Files.exists(contactPath) = " + Files.exists(contactPath));
+//        System.out.println("contactPath = " + contactPath);
+//        System.out.println("Files.exists(contactPath) = " + Files.exists(contactPath));
 
-        List<String> contactList = Arrays.asList("John - 21021212122", "Matthias - 9090227474");
-        System.out.println("contactList = " + contactList);
+        List<String> contactList = Arrays.asList("John - 210-212-12122", "Matthias - 909-022-7474");
+//        System.out.println("contactList = " + contactList);
 
         Files.write(contactPath, contactList);
         System.out.println();
         //Reading from the file
         List<String> printList = Files.readAllLines(contactPath);
-        System.out.println("printList = " + printList);
+//        System.out.println("printList = " + printList);
+
+        for(int i = 0; i < printList.size(); i++){
+            System.out.println((i + 1) + ": " + printList.get(i));
+        }
+
+        Files.write(contactPath, Arrays.asList("Jose - 555-555-5555"), StandardOpenOption.APPEND);
+//        System.out.println(contactList);
+
+
+        contactList = Files.readAllLines(contactPath);
+        List<String> newList = new ArrayList<>();
+
+        for (String line : contactList){
+            if(line.equalsIgnoreCase("John")){
+                newList.add("Joe");
+                continue;
+            }
+            newList.add(line);
+        }
+        System.out.println(newList);
 
 
     }
