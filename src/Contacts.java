@@ -1,8 +1,6 @@
-package contacts;
-
-public class txt {
-
+public class Contacts {
     public static void main(String[] args) {
+
         System.out.println("1. View contacts.");
         System.out.println("2. Add a new contact.");
         System.out.println("3. Search a contact by name.");
