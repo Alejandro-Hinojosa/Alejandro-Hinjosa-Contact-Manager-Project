@@ -14,8 +14,8 @@ import java.util.Scanner;
 public class Contacts {
 
     public static void main(String[] args) throws IOException {
-        Scanner userChoose = new Scanner(System.in);
-        System.out.println("Enter ");
+//        Scanner userChoose = new Scanner(System.in);
+        System.out.println("Select an option from below:");
 
         System.out.println("1. View contacts.");
         System.out.println("2. Add a new contact.");
@@ -24,6 +24,19 @@ public class Contacts {
         System.out.println("5. Exit.");
         System.out.println("Enter an option (1, 2, 3, 4, or 5):");
 
+//        Input in = new Input(); //Use your Input class to get input from the user, and display information based on their choice. (Remember to import your Input class)
+//        String userChoose = in.getString();
+        Scanner userChoose = new Scanner(System.in);
+        String userNumbers = userChoose.nextLine();
+        if (userNumbers.equals("5")) {
+            System.out.println("You have exited the contacts app");
+
+
+//        } else if (userChoice.equals("1")) {
+//            Movie[] movieList = findAll(); //THIS grabs from the 'MovieArray.java' and assigns it to a variable. 'findAll' was immediately available so we had to import it. 'findAll' returns the MoviesArray of all the movies. We store it in a variable for the first option "1".
+//            for (Movie allMovie : movieList) {
+//                System.out.println(allMovie.getName() + " -- " + allMovie.getCategory());
+            }
 
         //Let's make some new stuff - CREATING files and directories in JAVA
         String directory = "./src/data";
