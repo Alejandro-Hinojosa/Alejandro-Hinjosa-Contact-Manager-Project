@@ -40,7 +40,7 @@ public class Contacts {
         System.out.println("4. Delete an existing contact.");
         System.out.println("5. Exit.");
         System.out.println("Enter an option (1, 2, 3, 4, or 5):");
-// Add scanner to give menu functionality
+        // Add scanner to give menu functionality
 
         ///////////////////////// VIEW CONTACTS///////////////////////////
 
@@ -75,13 +75,31 @@ public class Contacts {
         System.out.println("contactList = " + contactList);
 
 
-
-
         //TODO///////////////////////// TODO SEARCH CONTACTS///////////////////////////
 
-//    } else if (input == 3){
-//
-//    }
+    } else if (input == 3){
+        List<String> printList = Files.readAllLines(contactPath);
+        Scanner myScanner = new Scanner(System.in);
+        System.out.println("Enter your contact name that you would like to search for.");
+        String userSearch = myScanner.nextLine();
+        System.out.println(userSearch);
+//        System.out.println(printList);
+
+        String reply = "";
+        for(int i = 0; i < printList.size(); i++) {
+
+            if (printList.get(i).contains(userSearch)) {
+                reply = "We found your contact in our list!";
+//                break;
+            } else {
+                reply = "Unfortunately we did not find your contact in our list.";
+            }
+        }
+            System.out.println(reply);
+
+
+
+
 //        We got our tokens - a name and a num
 //        System.out.println(dataFile);
 
@@ -96,7 +114,7 @@ public class Contacts {
         }
             ArrayList<String> newList = new ArrayList<>();
 //friendsList.removeIf(friend -> friend.getName().equals(name));
-            System.out.println("");
+            System.out.println(" ");
             System.out.println("Choose name to delete: ");
 
 //        userDelete.nextLine();
