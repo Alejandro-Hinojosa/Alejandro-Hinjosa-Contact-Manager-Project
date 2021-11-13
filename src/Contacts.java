@@ -17,6 +17,7 @@ public class Contacts {
 //        Scanner userChoose = new Scanner(System.in);
         System.out.println("Select an option from below:");
         Scanner userChoose = new Scanner(System.in);
+        Scanner userDelete = new Scanner(System.in);
         System.out.println("Enter ");
         //Let's make some new stuff - CREATING files and directories in JAVA
         String directory = "./src/data";
@@ -24,6 +25,9 @@ public class Contacts {
         Path dataDirectory = Paths.get(directory);
         Path dataFile = Paths.get(directory, filename);
         Path contactPath = Paths.get(directory, filename);
+        Path contactPathRemove = Paths.get(directory, filename);
+
+
 
         //building the whole shebang! A path combining: the directory's path + the desired filename at the end :D
 
@@ -37,13 +41,19 @@ public class Contacts {
         System.out.println("5. Exit.");
         System.out.println("Enter an option (1, 2, 3, 4, or 5):");
 // Add scanner to give menu functionality
-    int input = userChoose.nextInt();
+
+        ///////////////////////// VIEW CONTACTS///////////////////////////
+
+        int input = userChoose.nextInt();
         System.out.println(input);
     if (input == 1) {
         List<String> printList = Files.readAllLines(contactPath);
         for (int i = 0; i < printList.size(); i++) {
             System.out.println(printList.get(i));
         }
+
+        ///////////////////////// ADD CONTACTS///////////////////////////
+
     } else if (input == 2) {
         userChoose.nextLine();
         System.out.println("Hey - what name would you like to add in?");
@@ -54,31 +64,56 @@ public class Contacts {
 
 //        Input in = new Input(); //Use your Input class to get input from the user, and display information based on their choice. (Remember to import your Input class)
 //        String userChoose = in.getString();
-        Scanner userChoose = new Scanner(System.in);
-        String userNumbers = userChoose.nextLine();
-        if (userNumbers.equals("5")) {
-            System.out.println("You have exited the contacts app");
+//        Scanner userChoose = new Scanner(System.in);
 
 
-//        } else if (userChoice.equals("1")) {
-//            Movie[] movieList = findAll(); //THIS grabs from the 'MovieArray.java' and assigns it to a variable. 'findAll' was immediately available so we had to import it. 'findAll' returns the MoviesArray of all the movies. We store it in a variable for the first option "1".
-//            for (Movie allMovie : movieList) {
-//                System.out.println(allMovie.getName() + " -- " + allMovie.getCategory());
-            }
         Files.write(contactPath, Arrays.asList(contactName + " " + contactNum), StandardOpenOption.APPEND);
         List<String> contactList = Files.readAllLines(contactPath);
 
         contactList = Files.readAllLines(contactPath);
 
         System.out.println("contactList = " + contactList);
-    } else if (input == 3){
 
-    }
-        //We got our tokens - a name and a num
+
+
+
+        //TODO///////////////////////// TODO SEARCH CONTACTS///////////////////////////
+
+//    } else if (input == 3){
+//
+//    }
+//        We got our tokens - a name and a num
 //        System.out.println(dataFile);
 
+        ///////////////////////// DELETE CONTACTS///////////////////////////
+
+    } else if (input == 4) {
+        List<String> printList = Files.readAllLines(contactPath);
+//        for (int i = 0; i < printList.size(); i++) {
+            for (String showList : printList) {
+            System.out.println(showList);
+
+        }
+            ArrayList<String> newList = new ArrayList<>();
+//friendsList.removeIf(friend -> friend.getName().equals(name));
+            System.out.println("");
+            System.out.println("Choose name to delete: ");
+
+//        userDelete.nextLine();
+            String name = userDelete.nextLine();
+
+            for (String line : printList) {
+                if (line.toLowerCase().contains(name.toLowerCase())) {
+                    continue;
+                }
+                newList.add(line);
+                Files.write(contactPath, newList);
+                System.out.println("The contact " + name + " has been removed!");
+            }
+        }
 
 
+//        if(name.equals(printList))
 //        System.out.println("contactPath = " + contactPath);
 //        System.out.println("Files.exists(contactPath) = " + Files.exists(contactPath));
 
@@ -106,6 +141,14 @@ public class Contacts {
 
 
 
+        ///////////////////////// EXIT PAGE///////////////////////////
+
+        String userNumbers = userChoose.nextLine();
+        if (userNumbers.equals("5")) {
+            System.out.println("You have exited the contacts app");
+        }
+
 
     }
 }
+
