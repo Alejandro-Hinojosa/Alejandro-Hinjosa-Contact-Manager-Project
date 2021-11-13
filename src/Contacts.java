@@ -148,6 +148,7 @@ public class Contacts {
 
     else if (input == 5) {
             System.out.println("You have exited the contacts app");
+            break;
         }
 
             System.out.print("Do you want to continue: [Y/N]");
