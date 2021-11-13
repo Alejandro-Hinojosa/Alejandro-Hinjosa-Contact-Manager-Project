@@ -32,7 +32,9 @@ public class Contacts {
 
 
         //building the whole shebang! A path combining: the directory's path + the desired filename at the end :D
-
+        boolean confirm;
+        Scanner bob = new Scanner(System.in);
+        do{
         if (Files.notExists(dataFile)) {
             Files.createFile(dataFile);
         }
@@ -45,9 +47,7 @@ public class Contacts {
         // Add scanner to give menu functionality
 
         ///////////////////////// VIEW CONTACTS///////////////////////////
-//todo        boolean confirm;
-//        Scanner bob = new Scanner(System.in);
-//        do{
+
         int input = userChoose.nextInt();
 //        System.out.println(input);
     if (input == 1) {
@@ -131,9 +131,11 @@ public class Contacts {
                 newList.add(line);
                 Files.write(contactPath, newList);
                 System.out.println("The contact " + name + " has been removed!");
-                System.out.println("Would you like to delete another name? [Y/N]");
-//                    if
             }
+        //todo            System.out.print("Do you want to continue to talk Bob: [Y/N]");
+//            confirm = bob.next().equalsIgnoreCase(("y"));
+//            bob.nextLine();
+//        } while(confirm);
 
 //
 //        }
@@ -148,10 +150,10 @@ public class Contacts {
             System.out.println("You have exited the contacts app");
         }
 
-//todo            System.out.print("Do you want to continue to talk Bob: [Y/N]");
-//            confirm = bob.next().equalsIgnoreCase(("y"));
-//            bob.nextLine();
-//        } while(confirm);
+            System.out.print("Do you want to continue: [Y/N]");
+            confirm = bob.next().equalsIgnoreCase(("y"));
+            bob.nextLine();
+        } while(confirm);
 
 
     }
