@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -29,6 +30,7 @@ public class Contacts {
 
 
 
+
         //building the whole shebang! A path combining: the directory's path + the desired filename at the end :D
 
         if (Files.notExists(dataFile)) {
@@ -43,13 +45,16 @@ public class Contacts {
 // Add scanner to give menu functionality
 
         ///////////////////////// VIEW CONTACTS///////////////////////////
-
+//todo        boolean confirm;
+//        Scanner bob = new Scanner(System.in);
+//        do{
         int input = userChoose.nextInt();
-        System.out.println(input);
+//        System.out.println(input);
     if (input == 1) {
         List<String> printList = Files.readAllLines(contactPath);
         for (int i = 0; i < printList.size(); i++) {
             System.out.println(printList.get(i));
+
         }
 
         ///////////////////////// ADD CONTACTS///////////////////////////
@@ -61,6 +66,7 @@ public class Contacts {
         System.out.println("Thank you - what number is associated with that contact?");
         String contactNum = userChoose.nextLine();
         System.out.printf("Let's see what we got = %s %s", contactName, contactNum);
+        System.out.print("Do you want to add another number: [Y/N]");
 
 //        Input in = new Input(); //Use your Input class to get input from the user, and display information based on their choice. (Remember to import your Input class)
 //        String userChoose = in.getString();
@@ -92,14 +98,10 @@ public class Contacts {
 //        for (int i = 0; i < printList.size(); i++) {
             for (String showList : printList) {
             System.out.println(showList);
-
         }
             ArrayList<String> newList = new ArrayList<>();
-//friendsList.removeIf(friend -> friend.getName().equals(name));
             System.out.println("");
             System.out.println("Choose name to delete: ");
-
-//        userDelete.nextLine();
             String name = userDelete.nextLine();
 
             for (String line : printList) {
@@ -109,44 +111,27 @@ public class Contacts {
                 newList.add(line);
                 Files.write(contactPath, newList);
                 System.out.println("The contact " + name + " has been removed!");
+                System.out.println("Would you like to delete another name? [Y/N]");
+//                    if
             }
-        }
-
-
-//        if(name.equals(printList))
-//        System.out.println("contactPath = " + contactPath);
-//        System.out.println("Files.exists(contactPath) = " + Files.exists(contactPath));
-
-//        List<String> contactList = Arrays.asList("Name     |   Phone number", "-------------------------", "John A. | 210-212-1212", "Matthias H. | 909-022-7474", "Bernie S. | 310-333-8888", "Bosch L. | 444-444-44444");
-//        System.out.println("contactList = " + contactList);
-// commented out code to not have it overriding new contact
-//        Files.write(contactPath, contactList);
-        System.out.println();
-        //Reading from the file
-//        System.out.println("printList = " + printList);
-
-
-
-//        Files.write(contactPath, Arrays.asList("Jose - 555-555-5555"), StandardOpenOption.APPEND);
-//        System.out.println(contactList);
-
-
-        List<String> newList = new ArrayList<>();
 
 //
-        System.out.println();
-
-        //How to add scanner and add someone dynamically?  A mini application demo
-        Scanner myScanner = new Scanner(System.in);
+//        }
 
 
+    }
 
-        ///////////////////////// EXIT PAGE///////////////////////////
 
-        String userNumbers = userChoose.nextLine();
-        if (userNumbers.equals("5")) {
+    ///////////////////////// EXIT PAGE///////////////////////////
+
+    else if (input == 5) {
             System.out.println("You have exited the contacts app");
         }
+
+//todo            System.out.print("Do you want to continue to talk Bob: [Y/N]");
+//            confirm = bob.next().equalsIgnoreCase(("y"));
+//            bob.nextLine();
+//        } while(confirm);
 
 
     }
